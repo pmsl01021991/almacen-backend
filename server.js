@@ -22,9 +22,10 @@ const __dirname = path.dirname(__filename);
 // CONFIGURAR CORS
 // =========================
 app.use(cors({
-  origin: ["http://localhost:3000", "https://almacen-app.vercel.app"],
+  origin: (origin, callback) => callback(null, true),
   credentials: true
 }));
+
 
 
 // Middleware
