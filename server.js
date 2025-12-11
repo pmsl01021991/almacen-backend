@@ -8,7 +8,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors"; // 👈 agregado
 import db from "./db.js";   // 👈 conexión a BD
-//import "./jobs/simulacion.js"; // 👈 cron jobs
+
 
 // update fix
 
