@@ -116,7 +116,8 @@ app.post("/login", async (req, res) => {
   console.log("🔎 Respuesta de Google:", recaptchaData);
 
   if (!recaptchaData.success) {
-    return res.send("<h2>❌ reCAPTCHA inválido</h2><a href='/login.html'>Volver</a>");
+    return res.json({ success: false, message: "reCAPTCHA inválido ❌" });
+
   }
 
   // 2. Validar usuario
