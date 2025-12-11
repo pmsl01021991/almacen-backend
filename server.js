@@ -117,7 +117,8 @@ app.post("/login", async (req, res) => {
   console.log("🔎 Respuesta de Google:", recaptchaData);
 
   if (!recaptchaData.success) {
-    return res.json({ success: false, message: "reCAPTCHA inválido ❌" });
+    return res.json({ success: false, error: "recaptcha" });
+
 
   }
 
@@ -141,14 +142,16 @@ app.post("/login", async (req, res) => {
     }, (err, info) => {
       if (err) {
         console.error("❌ Error enviando correo:", err);
-        return res.send("<h2>Error enviando el correo. Revisa tu configuración de Gmail</h2><a href='/login.html'>Volver</a>");
+        return res.json({ success: false, error: "email" });
+
       }
       console.log("📧 Correo enviado con éxito:", info.response);
       res.redirect("/verificar.html");
     });
   } else {
     console.log("❌ Usuario o contraseña incorrectos");
-    res.redirect("/index.html");
+    return res.json({ success: false, error: "credenciales" });
+
   }
 });
 
@@ -195,11 +198,13 @@ app.post("/verificar", (req, res) => {
     req.session.user = req.session.userTemp;
     delete req.session.codigo2FA;
     delete req.session.userTemp;
-    res.redirect("/admin");
+
+    return res.json({ success: true });
   } else {
-    res.send("<h2>❌ Código incorrecto</h2><a href='/verificar.html'>Volver</a>");
+    return res.json({ success: false, error: "codigo" });
   }
 });
+
 
 // =========================
 // RUTA PARA ADMIN DASHBOARD
