@@ -146,7 +146,7 @@ app.post("/login", async (req, res) => {
 
       }
       console.log("📧 Correo enviado con éxito:", info.response);
-      res.redirect("/verificar.html");
+      return res.json({ success: true });
     });
   } else {
     console.log("❌ Usuario o contraseña incorrectos");
