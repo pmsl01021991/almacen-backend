@@ -10,6 +10,9 @@ import cors from "cors"; // 👈 agregado
 import db from "./db.js";   // 👈 conexión a BD
 //import "./jobs/simulacion.js"; // 👈 cron jobs
 
+// update fix
+
+
 dotenv.config();
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
