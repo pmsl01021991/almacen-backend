@@ -1,3 +1,6 @@
+// DESACTIVADO — simulación eliminada para evitar errores con Aiven
+/*
+
 import db from "../db.js";
 import cron from "node-cron";
 
@@ -64,4 +67,5 @@ cron.schedule("* * * * *", async () => {
   } catch (err) {
     console.error("❌ Error en simulación:", err);
   }
-});
+});   TODO EL ARCHIVO VA AQUÍ DENTRO
+*/
